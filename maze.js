@@ -35,10 +35,12 @@ function ex3(){
 	var end=document.getElementById('end');
 	end.addEventListener('mouseover', function(){
 		if(l>0){//checks whether the borders were touched
-			alert("you Lose!");
+			//alert("you Lose!");
+			document.getElementById('status').innerHTML='You Lose Click the S to restart the game';//ex5 On-page status update.
 		}
 		else{
-			alert("You Won!");
+			//alert("You Won!");
+			document.getElementById('status').innerHTML='You Won!\nClick the S to restart the game.';//ex5 On-page status update.
 		}
 	});
 }
@@ -59,5 +61,6 @@ function ex4(){
 		})
 	}
 }
+
 
 		
