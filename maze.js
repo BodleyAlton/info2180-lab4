@@ -4,6 +4,7 @@ window.onload = function(){
 	ex2();
 	ex3();
 	ex4();
+	ex6();
 }
 
 function ex1(){
@@ -24,14 +25,7 @@ function ex2(){
 			var i = glory.length-2;	
 			for (i; i >= 0; i--) {
 				glory[i].setAttribute('class','boundary youlose');
-				
-			//glory[i].setAttribute('class','boundary youlose');
-			/*glory[1].setAttribute('class' ,'boundary youlose');
-			glory[2].setAttribute('class' ,'boundary youlose');
-			glory[3].setAttribute('class' ,'boundary youlose');
-			glory[4].setAttribute('class' ,'boundary youlose');
-			glory[0].setAttribute('class' ,'boundary youlose');*/
-			l+=1;//ex3 (increments whenever the borders are touched)
+				l+=1;//ex3 (increments whenever the borders are touched)
 			}
 		});		
 	};
@@ -41,7 +35,6 @@ function ex3(){
 	var end=document.getElementById('end');
 	end.addEventListener('mouseover', function(){
 		if(l>0){//checks whether the borders were touched
-			//alert("you Lose!");
 			document.getElementById('status').innerHTML='You Lose! Click the "S" to restart the game';//ex5 On-page status update.
 		}
 		else{
@@ -55,7 +48,6 @@ function ex4(){
 	var glory=document.querySelectorAll('div.boundary');
 	var i = glory.length- 2;
 	for (i; i >= 0; i--) {
-
 		var start=document.getElementById('start');
 		start.addEventListener('click',function(){
 			l=0;
@@ -65,10 +57,47 @@ function ex4(){
 				glory[i].setAttribute('class','boundary');
 			document.getElementById('status').innerHTML='Move your mouse over the "S" to begin.';
 			}
-		})
+		});
 	}
 }
 
-function ex5(){
-	
+function ex6(evnt){
+
+	var start=document.getElementById('start');
+	var maze=document.getElementsByTagName("body");
+	var x=0;
+	var y=0;
+	var lft=0;
+	var rht=0;
+	var wdt=0;
+	var hgt=0;
+	start.addEventListener('click', function(event){
+		x=event.clientX;
+		y=event.clientY;
+		//console.log('y\t'+y)
+	});
+	maze.addEventListener('mousemove', function(){
+	lft=maze.offsetLeft;
+	top=maze.offsetTop;
+	wdt=maze.offsetWidth;
+	hgt=maze.offsetHeight;
+	console.log('x'+x)
+	console.log('y'+y)
+	console.log('lft'+lft)
+	console.log('top'+rht)
+	console.log('wdt'+wdt)
+	console.log('hgt'+hgt)
+		if(x>lft && x>wdt && y>top && y<hgt){			
+			var glory=document.querySelectorAll('div.boundary');
+			var i = glory.length-2;	
+			for (i; i >= 0; i--) {
+				glory[i].setAttribute('class','boundary youlose');
+			}
+		}
+
+		else{
+			console.log('No cheat')
+			}
+	});
+
 }	
